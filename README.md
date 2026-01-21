@@ -1,6 +1,6 @@
 # Raspberry Pi NAS & Media Server
 
-This repository documents the configuration and operation of a Linux-based NAS and media server deployed on a Raspberry Pi 5.
+This repository documents the configuration and operation of my Debian-based NAS and media server deployed on a Raspberry Pi 5.
 The system provides centralized storage, authenticated file sharing, and LAN-based media streaming.
 
 ---
