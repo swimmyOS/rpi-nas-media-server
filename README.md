@@ -49,7 +49,7 @@ Guest access and SMBv1 are disabled.
 ## Media Server
 
 - Service: Jellyfin
-- Access: trusted network zone only, remote connections disabled
+- Access: trusted network zone, plus remote devices over Tailscale; Jellyfin's built-in remote access stays disabled
 - Playback mode: Direct Play preferred
 - Clients: Web browsers, smart TVs, and mobile devices
 
@@ -80,10 +80,11 @@ SMART data is not exposed in Cockpit due to USB enclosure limitations.
 
 ## Security
 
-- No host firewall: filtering is done by the network firewall's per-service policies
-- Only the services listed above are reachable, and only from the trusted zone
+- No host firewall: on the local network, filtering is done by the network firewall's per-service policies
+- Only the services listed above are reachable on the local network, and only from the trusted zone
 - The server zone cannot start connections to client devices
-- No WAN exposure
+- No WAN exposure: remote access uses Tailscale, so no inbound ports are open
+- Tailscale access policy allows remote devices to reach the media server only
 - No anonymous shares
 - Unused services disabled (printing, Bluetooth, modem management, NetBIOS browsing)
 
@@ -97,6 +98,7 @@ The server sits in a dedicated server zone of the segmented homelab network:
 - Clients reach shares, Jellyfin and Cockpit by local hostname rather than IP
 - Hosts Pi-hole, the network-wide DNS filter for the trusted zone
 - Time synced from the network firewall
+- Joined to a Tailscale network for remote media streaming
 
 ---
 
